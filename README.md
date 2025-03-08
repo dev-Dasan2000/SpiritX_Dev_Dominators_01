@@ -24,7 +24,7 @@ A secure and user-friendly authentication system
 ## Instructions to Run the Project
 
 ### Prerequisites
-Ensure the following are installed on your system:
+Ensure the following are installed on the system:
 - **Node.js** (v18 or higher) – [Download here](https://nodejs.org/)
 - **PostgreSQL** (v15 or higher) – [Download here](https://www.postgresql.org/)
 - **Git** – [Download here](https://git-scm.com/)
@@ -38,7 +38,7 @@ cd <your-project-folder>
 
 ### 2. Install Dependencies
 
-Ensure you are in the project folder, then run:
+Ensure in the correct project folder, then run:
 
 ```bash
 npm install
@@ -58,7 +58,7 @@ DATABASE_URL=postgresql://username:password@localhost:5432/your_database
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
-Ensure PostgreSQL is running and the credentials match your local setup.
+Ensure PostgreSQL is running and the credentials match relevent local setup.
 
 ### 4. Run Database Migrations (If applicable)
 
@@ -68,7 +68,7 @@ If you use a migration tool (e.g., Prisma or Drizzle), apply the migrations to s
 npx prisma migrate dev
 ```
 
-Make sure your PostgreSQL database is running before executing this command.
+Ensure the PostgreSQL database is running before executing this command.
 
 ### 5. Start the Development Servers
 
