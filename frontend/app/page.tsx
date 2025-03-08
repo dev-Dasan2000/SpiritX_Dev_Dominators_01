@@ -89,26 +89,15 @@ export default function LoginForm() {
       rememberMe: false
     }
   });
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   // Handle form submission on click
   function onSubmit(data : any) {
     console.log(data);
     // Add your authentication logic here
-=======
-=======
->>>>>>> Stashed changes
   // Handle form submission
   function onSubmit() {
     console.log(username, password, rememberMe);
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   }
-
+  }
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent mx-4">
       <Card className="w-full max-w-sm bg-gray-700 text-white shadow-lg rounded-lg border-none">
