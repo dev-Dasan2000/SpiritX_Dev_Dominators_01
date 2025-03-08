@@ -20,7 +20,7 @@ A secure and user-friendly authentication system
 - [iamindunil](https://www.github.com/imaindunil)
 
 
-## Instruction
+## --Instruction--
 ## Instructions to Run the Project
 
 ### Prerequisites
