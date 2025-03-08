@@ -54,6 +54,7 @@ export default function SignupForm() {
   // Password strength validation
   const handlePasswordChange = (value: string) => {
     let strength = "";
+    let progress = 0;
 
     // Check password
     const hasUpperCase = /[A-Z]/.test(value);
@@ -65,10 +66,13 @@ export default function SignupForm() {
     if (value.length > 0) {
       if (!hasMinLength || !hasUpperCase || !hasLowerCase || !hasSpecialChar) {
         strength = "Weak password";
-      } else if (value.length >= 8 && value.length <= 12) {
+        progress = 30;
+      } else if (value.length > 7 && value.length < 10) {
         strength = "Moderate password";
+        progress = 70;
       } else {
         strength = "Strong password";
+        progress = 100;
       }
     }
 
@@ -84,7 +88,7 @@ export default function SignupForm() {
 
   // Password match validation
   const handleConfirmPasswordChange = (value: string) => {
-    if (value.length > 8) {
+    if (value.length > 7) {
       setPasswordMatch(password === value);
     } else {
       setPasswordMatch(false);
@@ -105,10 +109,10 @@ export default function SignupForm() {
           else if (retrievedData.error) {
             setAuthError(retrievedData.error);
           }
-        } catch (error:any) {
+        } catch (error: any) {
           setAuthError(error);
         }
-        finally{
+        finally {
           setLoading(false);
         }
       }
@@ -142,11 +146,13 @@ export default function SignupForm() {
                         }}
                       />
                     </FormControl>
+
                     {isAvailable !== null && (
                       <FormDescription
                         className={`text-sm ${isAvailable ? "text-green-400" : "text-red-400"}`}
                       >
-                        {isAvailable ? "Username is valid" : "Username is invalid - must me at least 8 charaters long"}
+
+                        {isAvailable ? "Username is valid" : "Username is invalid - must be at least 8 characters long"}
                       </FormDescription>
                     )}
                     <FormMessage className="text-red-400" />
@@ -177,6 +183,25 @@ export default function SignupForm() {
                         {passwordStrength}
                       </FormDescription>
                     )}
+                    <div className="h-1 mt-2 bg-gray-500">
+                      <div
+                        className="h-full"
+                        style={{
+                          width: `${passwordStrength === "Weak password"
+                            ? 30
+                            : passwordStrength === "moderate password"
+                            ? 70
+                            : passwordStrength === "Strong password"
+                            ? 100
+                            : 0}%`,
+                          backgroundColor: passwordStrength === "Strong password"
+                            ? 'green'
+                            : passwordStrength === "Moderate password"
+                            ? 'yellow'
+                            : 'red',
+                        }}
+                      ></div>
+                    </div>
                     <FormMessage className="text-red-400" />
                   </FormItem>
                 )}
@@ -215,11 +240,11 @@ export default function SignupForm() {
               {/* Signup Button */}
               <p className="text-center text-red-400 text-sm">{authError}</p>
               <Button
-              disabled={loading}
+                disabled={loading}
                 type="submit"
                 className="w-full bg-gradient-to-r py-6 rounded-full from-purple-500 to-blue-500 text-white hover:opacity-80"
               >
-                {loading? <Loader2/> : "Create Account"}
+                {loading ? <Loader2 /> : "Create Account"}
               </Button>
             </form>
           </Form>
