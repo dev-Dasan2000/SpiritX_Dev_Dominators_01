@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import Loader2 from "@/components/Loader";
+import SuccessDialog from "@/components/SuccessDailog";
 
 import loginMethods from './api/api-methods';
 
@@ -36,6 +38,8 @@ export default function LoginForm() {
 
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
+
+  const [showPopUp, setShowPopUp] = useState(false);
 
   const isReturningUser = searchParams.get("welcomeBack") === "true";
 
@@ -114,7 +118,7 @@ export default function LoginForm() {
       const response = await loginMethods.login(username, password, rememberMe);
 
       if (response.success && response.accessToken) {
-        window.location.href = "/dashboard";
+        setShowPopUp(true);
       } else {
         if(response.error){
           setAuthError(response.error);
@@ -129,7 +133,6 @@ export default function LoginForm() {
       setLoading(false);
     }
   }
-
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent mx-4">
@@ -229,7 +232,7 @@ export default function LoginForm() {
                 className="w-full py-6 rounded-full cursor-pointer bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:opacity-80"
                 disabled={loading && (isPasswordValid || isUsernameValid)}
               >
-                {loading ? "Signing In..." : "Sign in"}
+                {loading ? <Loader2/> : "Sign in"}
               </Button>
             </form>
           </Form>
@@ -239,6 +242,7 @@ export default function LoginForm() {
           </p>
         </CardContent>
       </Card>
+      {showPopUp && <SuccessDialog iconType="success" message="Success" subMessage="You have successfully logged in" showProgressBar={true} redirect="/home"/>}
     </div>
   );
 }
