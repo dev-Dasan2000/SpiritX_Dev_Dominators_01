@@ -55,7 +55,7 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50 ">
+    <div className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50">
       <div className="relative bg-gradient-to-b from-[#1e293b] to-[#0f172a] rounded-2xl w-[350px] p-5 shadow-lg">
         <div className="absolute left-1/2 transform -translate-x-1/2">
           {getIcon(iconType)}
