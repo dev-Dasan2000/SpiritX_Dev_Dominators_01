@@ -23,8 +23,8 @@ Ensure the following are installed on your system:
 ###  1. Clone the Repository
 
 ```bash
-git clone <your-repo-url>
-cd <your-project-folder>
+git clone <repo-url>
+cd <project-folder>
 ```
 
 ###  2. Install Dependencies
@@ -47,7 +47,7 @@ This will install all required Node.js packages for both frontend and backend, i
 4. Set up the `.env` file in the root directory:
 
 ```env
-DATABASE_URL=postgresql://username:password@localhost:5432/your_database
+DATABASE_URL=postgresql://username:password@localhost:5432/database
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
@@ -60,7 +60,7 @@ npx prisma migrate dev
 Alternatively, if ther is a database dump file, restore it using:
 
 ```bash
-psql -U your_username -d your_database_name -f path/to/dumpfile.sql
+psql -U username -d database_name -f path/to/dumpfile.sql
 ```
 
 ##  3. Start the Development Servers
@@ -106,7 +106,7 @@ npm run dev
 - [dev-Dasan2000](https://www.github.com/dev-Dasan2000)
 - [Dilesh99](https://www.github.com/Dilesh99)
 - [RWSandaru8](https://www.github.com/RWsandaru8)
-- [iamindunil](https://www.github.com/imaindunil)
+- [NaveenSandaru](https://www.github.com/NaveenSandaru)
 
 ##  License
 
