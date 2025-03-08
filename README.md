@@ -1,76 +1,73 @@
+
 # SpiritX_Dev_Dominators_01
 A secure and user-friendly authentication system
 
-## Table of Contents
+##  Table of Contents
 
 - [Instructions](#instructions)
-- [Database setup and Configuration steps](#instructions)
-- [Assumptions](#assumptions)  
-- [Usage](#usage)  
-- [Contribution](#contribution)  
-- [License](#license)  
+- [Database Setup and Configuration](#database-setup-and-configuration)
+- [Assumptions](#assumptions)
+- [Usage](#usage)
+- [Contribution](#contribution)
+- [License](#license)
 - [Additional Features](#additional-features)
 
-## Authors
-
-- [iamindunil](https://www.github.com/imaindunil)
-- [dev-Dasan2000](https://www.github.com/dev-Dasan2000)
-- [Dilesh99](https://www.github.com/Dilesh99)
-- [RWSandaru8](https://www.github.com/RWsandaru8)
-- [iamindunil](https://www.github.com/imaindunil)
-
-
-## --Instruction--
-## Instructions to Run the Project
+##  Instructions to Run the Project
 
 ### Prerequisites
-Ensure the following are installed on the system:
+Ensure the following are installed on your system:
 - **Node.js** (v18 or higher) – [Download here](https://nodejs.org/)
 - **PostgreSQL** (v15 or higher) – [Download here](https://www.postgresql.org/)
 - **Git** – [Download here](https://git-scm.com/)
 
-### 1. Clone the Repository
+###  1. Clone the Repository
 
 ```bash
 git clone <your-repo-url>
 cd <your-project-folder>
 ```
 
-### 2. Install Dependencies
+###  2. Install Dependencies
 
-Ensure in the correct project folder, then run:
+Ensure inside the correct project folder, then run:
 
 ```bash
 npm install
 ```
 
-This will install all required Node.js packages for both frontend and backend.
+This will install all required Node.js packages for both frontend and backend, including **shadcn/ui** and **Tailwind CSS**.
 
-### 3. Set Up Environment Variables
+##  Database Setup and Configuration
 
-Create a `.env` file in the root directory and add the following variables:
+1. Ensure PostgreSQL is installed and running on the system.
+
+2. Create a new database:
+
+```bash
+psql -U your_username
+CREATE DATABASE your_database_name;
+```
+
+3. Set up the `.env` file in the root directory:
 
 ```env
-# Database connection for PostgreSQL
 DATABASE_URL=postgresql://username:password@localhost:5432/your_database
-
-# Backend API URL
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
-Ensure PostgreSQL is running and the credentials match relevent local setup.
-
-### 4. Run Database Migrations (If applicable)
-
-If you use a migration tool (e.g., Prisma or Drizzle), apply the migrations to set up the database:
+4. Run Database Migrations (if applicable):
 
 ```bash
 npx prisma migrate dev
 ```
 
-Ensure the PostgreSQL database is running before executing this command.
+Alternatively, if ther is a database dump file, restore it using:
 
-### 5. Start the Development Servers
+```bash
+psql -U your_username -d your_database_name -f path/to/dumpfile.sql
+```
+
+##  3. Start the Development Servers
 
 Open two terminals and follow these steps:
 
@@ -88,46 +85,57 @@ cd frontend
 npm run dev
 ```
 
-### 6. Access the Project
+###  4. Access the Project
 
 - **Frontend**: [http://localhost:3000](http://localhost:3000)
 - **Backend**: [http://localhost:3001](http://localhost:3001)
 
-### 7. Run Tests (Optional)
+##  Assumptions
 
-If your project has tests, you can run them using:
+- The user has basic knowledge of Git, Node.js, and PostgreSQL.
+- PostgreSQL is installed and correctly configured.
+- The development environment is Windows.
+- **shadcn/ui** and **Tailwind CSS** are pre-installed and configured for UI styling.
 
-```bash
-npm test
-```
+##  Usage
 
-### 8. Build for Production
+1. Clone the repository and install dependencies.
+2. Set up the PostgreSQL database and run migrations or restore the dump.
+3. Start both the backend and frontend servers.
 
-When ready to deploy, build and start the production servers:
+##  --Contribution--
+## Authors
 
-1. **Backend**:
+- [iamindunil](https://www.github.com/imaindunil)
+- [dev-Dasan2000](https://www.github.com/dev-Dasan2000)
+- [Dilesh99](https://www.github.com/Dilesh99)
+- [RWSandaru8](https://www.github.com/RWsandaru8)
+- [iamindunil](https://www.github.com/imaindunil)
 
-```bash
-cd backend
-npm run build
-npm start
-```
+##  License
 
-2. **Frontend**:
+This project is licensed under the [MIT License](LICENSE).
 
-```bash
-cd frontend
-npm run build
-npm start
-```
+##  Additional Features
 
-###9. Troubleshooting
+- Authentication System (e.g., JWT-based login).
+- Error Handling and Logging.
+- Responsive UI with **shadcn/ui** and **Tailwind CSS**.
+- Modular Code Structure for scalability.
 
-- Ensure your PostgreSQL server is running and the credentials are correct.
-- Check the `.env` configuration if there are connection issues.
+###  Troubleshooting
+
+- Ensure PostgreSQL is running and credentials are correct.
+- Check `.env` configuration if there are connection issues.
 - Run `npm install` again if there are missing modules.
 
 ---
+
+
+
+
+
+
 
 
 
