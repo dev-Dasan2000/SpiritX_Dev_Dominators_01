@@ -67,17 +67,16 @@ psql -U username -d database_name -f path/to/dumpfile.sql
 
 Open two terminals and follow these steps:
 
-1. **Backend (Node.js)**
-
-```bash
-cd backend
-npm run dev
-```
-
-2. **Frontend (Next.js)**
+1. **Frontend (Next.js)**
 
 ```bash
 cd frontend
+npm run dev
+```
+2. **Backend (Node.js)**
+
+```bash
+cd backend
 npm run dev
 ```
 
