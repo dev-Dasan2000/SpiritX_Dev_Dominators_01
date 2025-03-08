@@ -7,10 +7,16 @@ const userMethods = {
                 body: JSON.stringify(userDetails),
             });
             const data = await response.json();
-            return { success: response.ok, error: data.error || null };
-        } catch (error) {
-            return { success: false, error: "Network error" };
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            return { success: response.ok };
+        } catch (error: any) {
+            if (error.message.includes("duplicate key value")) {
+                return { success: false, error: "User already exists" };
+            }
         }
+        return { success: false, error: "Network error" };
     },
 
     getUser: async function (username: string) {
@@ -29,7 +35,7 @@ const userMethods = {
             return { success: false, error: "Network error", user: null };
         }
     },
-    
+
     getAllUsers: async function () {
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users`, {
@@ -70,3 +76,5 @@ const userMethods = {
         }
     },
 };
+
+export default userMethods;

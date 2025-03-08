@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import SuccessDialog from "@/components/SuccessDailog";
+import userMethods from "./../api/user-methods";
+import Loader2 from "@/components/Loader";
 import {
   Form,
   FormControl,
@@ -21,6 +24,9 @@ export default function SignupForm() {
   const [isAvailable, setIsAvailable] = useState<boolean | null>(null);
   const [passwordStrength, setPasswordStrength] = useState<string>("");
   const [passwordMatch, setPasswordMatch] = useState<boolean | null>(null);
+  const [openPopup, setOpenPopup] = useState(false);
+  const [authError, setAuthError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Define form with react hook form
   const form = useForm({
@@ -48,13 +54,13 @@ export default function SignupForm() {
   // Password strength validation
   const handlePasswordChange = (value: string) => {
     let strength = "";
-  
+
     // Check password
     const hasUpperCase = /[A-Z]/.test(value);
     const hasLowerCase = /[a-z]/.test(value);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>_-]/.test(value);
     const hasMinLength = value.length > 8;
-  
+
     // Define password strength levels
     if (value.length > 0) {
       if (!hasMinLength || !hasUpperCase || !hasLowerCase || !hasSpecialChar) {
@@ -65,14 +71,14 @@ export default function SignupForm() {
         strength = "Strong password";
       }
     }
-  
+
     setPasswordStrength(strength);
-  
+
     // Update password match status when password changes
     if (confirmPassword) {
       setPasswordMatch(value === confirmPassword);
     }
-  
+
     return value;
   };
 
@@ -81,7 +87,7 @@ export default function SignupForm() {
     if (value.length > 8) {
       setPasswordMatch(password === value);
     } else {
-      setPasswordMatch(null);
+      setPasswordMatch(false);
     }
     return value;
   };
@@ -89,8 +95,22 @@ export default function SignupForm() {
   // Handle form submission
   const onSubmit = async (formData: any) => {
     if (isAvailable && passwordMatch) {
-      if(passwordStrength === "Strong password" || passwordStrength === "Moderate password") {
-        console.log("Form submitted", formData);
+      if (passwordStrength === "Strong password" || passwordStrength === "Moderate password") {
+        try {
+          setLoading(true);
+          const retrievedData = await userMethods.registerUser({ username: formData.username, password: formData.password });
+          if (retrievedData.success) {
+            setOpenPopup(true);
+          }
+          else if (retrievedData.error) {
+            setAuthError(retrievedData.error);
+          }
+        } catch (error:any) {
+          setAuthError(error);
+        }
+        finally{
+          setLoading(false);
+        }
       }
     }
   };
@@ -113,17 +133,17 @@ export default function SignupForm() {
                   <FormItem>
                     <FormLabel className="text-gray-300">Username</FormLabel>
                     <FormControl>
-                      <Input 
-                        placeholder="Enter username" 
-                        className="mt-1 bg-gray-800 border-none" 
-                        {...field} 
+                      <Input
+                        placeholder="Enter username"
+                        className="mt-1 bg-gray-800 border-none"
+                        {...field}
                         onChange={(e) => {
                           field.onChange(handleUsernameChange(e.target.value));
                         }}
                       />
                     </FormControl>
                     {isAvailable !== null && (
-                      <FormDescription 
+                      <FormDescription
                         className={`text-sm ${isAvailable ? "text-green-400" : "text-red-400"}`}
                       >
                         {isAvailable ? "Username is valid" : "Username is invalid - must me at least 8 charaters long"}
@@ -142,11 +162,11 @@ export default function SignupForm() {
                   <FormItem>
                     <FormLabel className="text-gray-300">Password</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="password" 
-                        placeholder="••••••••" 
-                        className="mt-1 bg-gray-800 border-none" 
-                        {...field} 
+                      <Input
+                        type="password"
+                        placeholder="••••••••"
+                        className="mt-1 bg-gray-800 border-none"
+                        {...field}
                         onChange={(e) => {
                           field.onChange(handlePasswordChange(e.target.value));
                         }}
@@ -170,18 +190,18 @@ export default function SignupForm() {
                   <FormItem>
                     <FormLabel className="text-gray-300">Confirm Password</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="password" 
-                        placeholder="••••••••" 
-                        className="mt-1 bg-gray-800 border-none" 
-                        {...field} 
+                      <Input
+                        type="password"
+                        placeholder="••••••••"
+                        className="mt-1 bg-gray-800 border-none"
+                        {...field}
                         onChange={(e) => {
                           field.onChange(handleConfirmPasswordChange(e.target.value));
                         }}
                       />
                     </FormControl>
                     {passwordMatch !== null && (
-                      <FormDescription 
+                      <FormDescription
                         className={`text-sm ${passwordMatch ? "text-green-400" : "text-red-400"}`}
                       >
                         {passwordMatch ? "Passwords match" : "Passwords do not match"}
@@ -193,11 +213,13 @@ export default function SignupForm() {
               />
 
               {/* Signup Button */}
-              <Button 
-                type="submit" 
+              <p className="text-center text-red-400 text-sm">{authError}</p>
+              <Button
+              disabled={loading}
+                type="submit"
                 className="w-full bg-gradient-to-r py-6 rounded-full from-purple-500 to-blue-500 text-white hover:opacity-80"
               >
-                Create Account
+                {loading? <Loader2/> : "Create Account"}
               </Button>
             </form>
           </Form>
@@ -209,6 +231,7 @@ export default function SignupForm() {
           </p>
         </CardContent>
       </Card>
+      {openPopup && <SuccessDialog iconType="success" message="Account created successfully" subMessage="You can now log in" showProgressBar={true} redirect="/" />}
     </div>
   );
 }
