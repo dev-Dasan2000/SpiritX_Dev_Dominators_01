@@ -38,7 +38,7 @@ export default function SignupForm() {
   // Simulated username availability check
   const handleUsernameChange = (value: string) => {
     if (value.length > 0) {
-      setIsAvailable(value.length > 3); // Simulated logic
+      setIsAvailable(value.length > 8);
     } else {
       setIsAvailable(null);
     }
@@ -110,7 +110,7 @@ export default function SignupForm() {
                       <FormDescription 
                         className={`text-sm ${isAvailable ? "text-green-400" : "text-red-400"}`}
                       >
-                        {isAvailable ? "Username is available" : "Username is taken"}
+                        {isAvailable ? "Username is valid" : "Username is invalid (must me at least 8 charaters long)"}//available is changed to check the length of the username
                       </FormDescription>
                     )}
                     <FormMessage className="text-red-400" />
