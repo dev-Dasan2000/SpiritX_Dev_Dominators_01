@@ -167,9 +167,11 @@ export default function LoginForm() {
                       </FormControl>
                       <FormMessage className="text-red-400" />
                     </FormItem>
-                    <div className="h-2 flex items-center">
-                      {usernameError && <p className="text-red-400">{usernameError}</p>}
-                      {userNameText && <p className="text-green-400">{userNameText}</p>}
+                    <div className=" items-center">
+                      <div className={`transition-all duration-1000 overflow-hidden max-h-0 ${usernameError || userNameText ? 'max-h-20' : ''}`}>
+                      {usernameError && <p className="text-red-400 text-[12px] transition-opacity duration-300">{usernameError}</p>}
+                      {userNameText && <p className="text-green-400 text-[12px]">{userNameText}</p>}
+                    </div>
                     </div>
                   </>
                 )}
@@ -196,9 +198,11 @@ export default function LoginForm() {
                       </FormControl>
                       <FormMessage className="text-red-400" />
                     </FormItem>
-                    <div className="h-2 flex items-center">
-                      {passwordError && <p className="text-red-400">{passwordError}</p>}
-                      {passwordText && <p className="text-green-400">{passwordText}</p>}
+                    <div className="items-center">
+                    <div className={`transition-all duration-1000 overflow-hidden max-h-0 ${passwordError || passwordText ? 'max-h-20' : ''}`}>
+                      {passwordError && <p className="text-red-400 text-[12px]">{passwordError}</p>}
+                      {passwordText && <p className="text-green-400 text-[12px]">{passwordText}</p>}
+                    </div>
                     </div>
                   </>
 
@@ -223,12 +227,14 @@ export default function LoginForm() {
                   </FormItem>
                 )}
               />
-              <div className="h-2 flex items-center">
-                {authError && <p className="text-red-400">{authError}</p>}
+              <div className=" items-center justify-center">
+                <div className={`transition-all duration-1000 overflow-hidden max-h-0 ${authError ? 'max-h-40' : ''}`}>
+                {authError && <p className="text-red-400 text-[12px]">{authError}</p>}
+                </div>
               </div>
               <Button
                 type="submit"
-                className="w-full py-6 rounded-full cursor-pointer bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:opacity-80"
+                className="w-full py-5 rounded-full cursor-pointer bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:opacity-80"
                 disabled={loading && (isPasswordValid || isUsernameValid)}
               >
                 {loading ? <Loader2/> : "Sign in"}
