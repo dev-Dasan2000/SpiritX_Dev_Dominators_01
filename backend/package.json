@@ -1,24 +1,26 @@
 {
-  "name": "spiritx_dev_dominators_01",
+  "name": "spiritx_task01",
   "version": "1.0.0",
-  "description": "A secure and user-friendly authentication system",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dev-Dasan2000/SpiritX_Dev_Dominators_01.git"
+    "dev": "nodemon .",
+    "start": "nodemon ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/dev-Dasan2000/SpiritX_Dev_Dominators_01/issues"
-  },
-  "homepage": "https://github.com/dev-Dasan2000/SpiritX_Dev_Dominators_01#readme",
+  "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
