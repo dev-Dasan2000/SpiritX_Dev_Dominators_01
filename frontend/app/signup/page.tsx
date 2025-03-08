@@ -37,7 +37,7 @@ export default function SignupForm() {
 
   // Simulated username availability check
   const handleUsernameChange = (value: string) => {
-    if (value.length > 0) {
+    if (value.length > 8) {
       setIsAvailable(value.length > 8);
     } else {
       setIsAvailable(null);
@@ -65,7 +65,7 @@ export default function SignupForm() {
 
   // Password match validation
   const handleConfirmPasswordChange = (value: string) => {
-    if (value.length > 0) {
+    if (value.length > 8) {
       setPasswordMatch(password === value);
     } else {
       setPasswordMatch(null);
@@ -74,10 +74,20 @@ export default function SignupForm() {
   };
 
   // Handle form submission
-  function onSubmit(data: any) {
-    console.log(data);
-    
-  }
+  const onSubmit = async (formData: any) => {
+    const { username, password } = formData;
+
+    const response = await fetch("/api/sendUser", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+    });
+
+    const responseData = await response.json();
+    console.error(responseData.message || responseData.error);
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent mx-4">
