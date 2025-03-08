@@ -95,7 +95,7 @@ export default function LoginForm() {
       }
     }
   }
-  // Define form with react-hook-form
+  
   const form = useForm({
     defaultValues: {
       username: "",
@@ -104,7 +104,6 @@ export default function LoginForm() {
     }
   });
 
-  // Handle form submission on click
   async function onSubmit() {
 
     if(!(isUsernameValid && isPasswordValid)) {
