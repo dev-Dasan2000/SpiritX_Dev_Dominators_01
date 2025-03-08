@@ -4,12 +4,11 @@ A secure and user-friendly authentication system
 
 ##  Table of Contents
 
-- [Instructions](#instructions)
+- [Instructions to Run the Project](#instructions-to-run-the-project)
 - [Database Setup and Configuration](#database-setup-and-configuration)
 - [Assumptions](#assumptions)
 - [Usage](#usage)
 - [Contribution](#contribution)
-- [License](#license)
 - [Additional Features](#additional-features)
 
 ##  Instructions to Run the Project
