@@ -30,7 +30,7 @@ export default function LoginForm() {
   });
 
   // Handle form submission on click
-  function onSubmit(data) {
+  function onSubmit(data : any) {
     console.log(data);
     // Add your authentication logic here
   }

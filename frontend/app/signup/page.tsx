@@ -76,7 +76,7 @@ export default function SignupForm() {
   // Handle form submission
   function onSubmit(data: any) {
     console.log(data);
-    // Add your account creation logic here
+    
   }
 
   return (
