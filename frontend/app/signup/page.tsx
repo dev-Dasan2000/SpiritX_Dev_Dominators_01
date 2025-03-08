@@ -38,28 +38,41 @@ export default function SignupForm() {
   // Simulated username availability check
   const handleUsernameChange = (value: string) => {
     if (value.length > 8) {
-      setIsAvailable(value.length > 8);
+      setIsAvailable(true);
     } else {
-      setIsAvailable(null);
+      setIsAvailable(false);
     }
     return value;
   };
 
   // Password strength validation
   const handlePasswordChange = (value: string) => {
-    if (value.length > 8) {
-      setPasswordStrength("Strong password");
-    } else if (value.length > 4) {
-      setPasswordStrength("Weak password");
-    } else {
-      setPasswordStrength("");
+    let strength = "";
+  
+    // Check password
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasLowerCase = /[a-z]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+    const hasMinLength = value.length > 8;
+  
+    // Define password strength levels
+    if (value.length > 0) {
+      if (!hasMinLength || !hasUpperCase || !hasLowerCase || !hasSpecialChar) {
+        strength = "Weak password";
+      } else if (value.length >= 8 && value.length <= 12) {
+        strength = "Moderate password";
+      } else {
+        strength = "Strong password";
+      }
     }
-
+  
+    setPasswordStrength(strength);
+  
     // Update password match status when password changes
     if (confirmPassword) {
       setPasswordMatch(value === confirmPassword);
     }
-    
+  
     return value;
   };
 
@@ -75,8 +88,10 @@ export default function SignupForm() {
 
   // Handle form submission
   const onSubmit = async (formData: any) => {
-    if (isAvailable && passwordStrength && passwordMatch) {
-      console.log("Form submitted", formData);
+    if (isAvailable && passwordMatch) {
+      if(passwordStrength === "Strong password" || passwordStrength === "Moderate password") {
+        console.log("Form submitted", formData);
+      }
     }
   };
 
