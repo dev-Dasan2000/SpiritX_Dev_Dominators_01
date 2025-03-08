@@ -75,18 +75,9 @@ export default function SignupForm() {
 
   // Handle form submission
   const onSubmit = async (formData: any) => {
-    const { username, password } = formData;
-
-    const response = await fetch("/api/auth", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-    });
-
-    const responseData = await response.json();
-    console.error(responseData.message || responseData.error);
+    if (isAvailable && passwordStrength && passwordMatch) {
+      console.log("Form submitted", formData);
+    }
   };
 
   return (
