@@ -4,12 +4,11 @@ A secure and user-friendly authentication system
 
 ##  Table of Contents
 
-- [Instructions](#instructions)
+- [Instructions to Run the Project](#instructions-to-run-the-project)
 - [Database Setup and Configuration](#database-setup-and-configuration)
 - [Assumptions](#assumptions)
 - [Usage](#usage)
 - [Contribution](#contribution)
-- [License](#license)
 - [Additional Features](#additional-features)
 
 ##  Instructions to Run the Project
@@ -67,17 +66,16 @@ psql -U username -d database_name -f path/to/dumpfile.sql
 
 Open two terminals and follow these steps:
 
-1. **Backend (Node.js)**
-
-```bash
-cd backend
-npm run dev
-```
-
-2. **Frontend (Next.js)**
+1. **Frontend (Next.js)**
 
 ```bash
 cd frontend
+npm run dev
+```
+2. **Backend (Node.js)**
+
+```bash
+cd backend
 npm run dev
 ```
 
@@ -107,7 +105,6 @@ npm run dev
 - [Dilesh99](https://www.github.com/Dilesh99)
 - [RWSandaru8](https://www.github.com/RWsandaru8)
 - [NaveenSandaru](https://www.github.com/NaveenSandaru)
-
 
 ##  Additional Features
 
