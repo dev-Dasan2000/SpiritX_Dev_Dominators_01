@@ -22,7 +22,7 @@ export default function SignupForm() {
   const [passwordStrength, setPasswordStrength] = useState<string>("");
   const [passwordMatch, setPasswordMatch] = useState<boolean | null>(null);
 
-  // Define form with react-hook-form
+  // Define form with react hook form
   const form = useForm({
     defaultValues: {
       username: "",
