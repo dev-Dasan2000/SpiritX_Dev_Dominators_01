@@ -1,3 +1,4 @@
+
 # SpiritX_Dev_Dominators_01
 A secure and user-friendly authentication system
 
@@ -11,7 +12,7 @@ A secure and user-friendly authentication system
 - [License](#license)
 - [Additional Features](#additional-features)
 
-##  Instructions to Run the Project
+## Instructions to Run the Project
 
 ### Prerequisites
 Ensure the following are installed on the system:
@@ -28,7 +29,7 @@ cd <your-project-folder>
 
 ### 2. Install Dependencies
 
-Ensure iside the correct project folder, then run:
+Ensure you are inside the correct project folder, then run:
 
 ```bash
 npm install
@@ -101,14 +102,14 @@ npm run dev
 2. Set up the PostgreSQL database and run migrations or restore the dump.
 3. Start both the backend and frontend servers.
 
-## --Contribution--
-## Authors
+## Contribution
+
+### Authors
 
 - [iamindunil](https://www.github.com/imaindunil)
 - [dev-Dasan2000](https://www.github.com/dev-Dasan2000)
 - [Dilesh99](https://www.github.com/Dilesh99)
 - [RWSandaru8](https://www.github.com/RWsandaru8)
-- [iamindunil](https://www.github.com/imaindunil)
 
 ## License
 
@@ -129,7 +130,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-.
 
 
 
