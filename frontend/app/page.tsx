@@ -7,7 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
- 
+
+import loginMethods from './api/api-methods';
+
 import {
   Form,
   FormControl,
@@ -32,6 +34,9 @@ export default function LoginForm() {
   const [authError, setAuthError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
   const isReturningUser = searchParams.get("welcomeBack") === "true";
 
   useEffect(() => {
@@ -47,9 +52,11 @@ export default function LoginForm() {
       if (username.length < 8) {
         setUsernameError("Username must be at least 8 characters long");
         setUserNameText("");
+        setIsUsernameValid(false);
       }
       else {
         setUsernameError("");
+        setIsUsernameValid(true);
         setUserNameText("Username is valid");
       }
     }
@@ -60,27 +67,30 @@ export default function LoginForm() {
       if (password.length < 8) {
         setPasswordError("Password must be at least 8 characters long");
         setPasswordText("");
+        setIsPasswordValid(false);
       }
       else if (!/[A-Z]/.test(password)) {
         setPasswordError("Password must include at least one uppercase letter");
         setPasswordText("");
+        setIsPasswordValid(false);
       }
       else if (!/[0-9]/.test(password)) {
         setPasswordError("Password must include at least one number");
         setPasswordText("");
+        setIsPasswordValid(false);
       }
       else if (!/[!@#$%^&*(),.?":{}|<>_-]/.test(password)) {
         setPasswordError("Password must include at least one special character");
         setPasswordText("");
+        setIsPasswordValid(false);
       }
       else {
         setPasswordError("");
+        setIsPasswordValid(true);
         setPasswordText("Password is valid");
       }
     }
   }
-
-
   // Define form with react-hook-form
   const form = useForm({
     defaultValues: {
@@ -89,15 +99,38 @@ export default function LoginForm() {
       rememberMe: false
     }
   });
+
   // Handle form submission on click
-  function onSubmit(data : any) {
-    console.log(data);
-    // Add your authentication logic here
-  // Handle form submission
-  function onSubmit() {
-    console.log(username, password, rememberMe);
+  async function onSubmit() {
+
+    if(!(isUsernameValid && isPasswordValid)) {
+      return;
+    }
+
+    setLoading(true);
+    setAuthError("");
+
+    try {
+      const response = await loginMethods.login(username, password, rememberMe);
+
+      if (response.success && response.accessToken) {
+        window.location.href = "/dashboard";
+      } else {
+        if(response.error){
+          setAuthError(response.error);
+          return;
+        }
+        setAuthError("Invalid username or password");
+        return;
+      }
+    } catch (error: any) {
+      setAuthError(error.message || "An unexpected error occurred");
+    } finally {
+      setLoading(false);
+    }
   }
-  }
+
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent mx-4">
       <Card className="w-full max-w-sm bg-gray-700 text-white shadow-lg rounded-lg border-none">
@@ -177,8 +210,9 @@ export default function LoginForm() {
                     <FormControl>
                       <Checkbox
                         checked={rememberMe}
-                        onCheckedChange={()=>{
-                          setRememberMe(!rememberMe);}}
+                        onCheckedChange={() => {
+                          setRememberMe(!rememberMe);
+                        }}
                       />
                     </FormControl>
                     <FormLabel className="text-gray-300 cursor-pointer justify-center">
@@ -193,8 +227,9 @@ export default function LoginForm() {
               <Button
                 type="submit"
                 className="w-full py-6 rounded-full cursor-pointer bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:opacity-80"
+                disabled={loading && (isPasswordValid || isUsernameValid)}
               >
-                Sign In
+                {loading ? "Signing In..." : "Sign in"}
               </Button>
             </form>
           </Form>
