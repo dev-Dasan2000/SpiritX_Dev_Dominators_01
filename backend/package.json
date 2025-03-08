@@ -1,0 +1,24 @@
+{
+  "name": "spiritx_dev_dominators_01",
+  "version": "1.0.0",
+  "description": "A secure and user-friendly authentication system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-Dasan2000/SpiritX_Dev_Dominators_01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dev-Dasan2000/SpiritX_Dev_Dominators_01/issues"
+  },
+  "homepage": "https://github.com/dev-Dasan2000/SpiritX_Dev_Dominators_01#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
