@@ -91,15 +91,21 @@ export default function LoginForm() {
   });
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   // Handle form submission on click
   function onSubmit(data : any) {
     console.log(data);
     // Add your authentication logic here
 =======
+=======
+>>>>>>> Stashed changes
   // Handle form submission
   function onSubmit() {
     console.log(username, password, rememberMe);
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   }
 
