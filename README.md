@@ -108,7 +108,6 @@ npm run dev
 - [RWSandaru8](https://www.github.com/RWsandaru8)
 - [NaveenSandaru](https://www.github.com/NaveenSandaru)
 
-
 ##  Additional Features
 
 - Authentication System (e.g., JWT-based login).
