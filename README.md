@@ -108,9 +108,6 @@ npm run dev
 - [RWSandaru8](https://www.github.com/RWsandaru8)
 - [NaveenSandaru](https://www.github.com/NaveenSandaru)
 
-##  License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ##  Additional Features
 
