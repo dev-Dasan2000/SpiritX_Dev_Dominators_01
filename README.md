@@ -2,13 +2,15 @@
 A secure and user-friendly authentication system
 
 ## Table of Contents
--[Instruction](#instruction)
--[Installation](#installation)
--[Assumptions](#Assumptions)
--[Usage](#usage)
--[Contribution](#contribution)
--[License](#license)
--[AdditionalFeatures](#aditionalfeatures)
+
+- [Instructions](#instructions)  
+- [Installation](#installation)  
+- [Assumptions](#assumptions)  
+- [Usage](#usage)  
+- [Contribution](#contribution)  
+- [License](#license)  
+- [Additional Features](#additional-features)
+
 
 
 
