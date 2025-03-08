@@ -14,7 +14,7 @@ A secure and user-friendly authentication system
 ##  Instructions to Run the Project
 
 ### Prerequisites
-Ensure the following are installed on your system:
+Ensure the following are installed on the system:
 - **Node.js** (v18 or higher) – [Download here](https://nodejs.org/)
 - **PostgreSQL** (v15 or higher) – [Download here](https://www.postgresql.org/)
 - **Git** – [Download here](https://git-scm.com/)
@@ -28,7 +28,7 @@ cd <your-project-folder>
 
 ### 2. Install Dependencies
 
-Ensure you are in the project folder, then run:
+Ensure iside the correct project folder, then run:
 
 ```bash
 npm install
@@ -38,7 +38,7 @@ This will install all required Node.js packages for both frontend and backend.
 
 ## Database Setup and Configuration
 
-1. Ensure PostgreSQL is installed and running on your system.
+1. Ensure PostgreSQL is installed and running on the system.
 
 2. Create a new database:
 
@@ -60,7 +60,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 npx prisma migrate dev
 ```
 
-Alternatively, if you have a database dump file, restore it using:
+Alternatively, if there is a database dump file, restore it using:
 
 ```bash
 psql -U your_username -d your_database_name -f path/to/dumpfile.sql
