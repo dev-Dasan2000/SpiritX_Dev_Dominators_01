@@ -3,8 +3,8 @@ A secure and user-friendly authentication system
 
 ## Table of Contents
 
-- [Instructions](#instructions)  
-- [Installation](#installation)  
+- [Instructions](#instructions)
+- [Database setup and Configuration steps](#instructions)
 - [Assumptions](#assumptions)  
 - [Usage](#usage)  
 - [Contribution](#contribution)  
