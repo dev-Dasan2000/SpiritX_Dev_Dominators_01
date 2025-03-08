@@ -41,14 +41,10 @@ This will install all required Node.js packages for both frontend and backend, i
 
 1. Ensure PostgreSQL is installed and running on the system.
 
-2. Create a new database:
+2. Database Aquation:
+   Database is all setuped and frontend access from the backend.
 
-```bash
-psql -U your_username
-CREATE DATABASE your_database_name;
-```
-
-3. Set up the `.env` file in the root directory:
+4. Set up the `.env` file in the root directory:
 
 ```env
 DATABASE_URL=postgresql://username:password@localhost:5432/your_database
