@@ -77,7 +77,7 @@ export default function SignupForm() {
   const onSubmit = async (formData: any) => {
     const { username, password } = formData;
 
-    const response = await fetch("/api/sendUser", {
+    const response = await fetch("../api/auth", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -120,7 +120,7 @@ export default function SignupForm() {
                       <FormDescription 
                         className={`text-sm ${isAvailable ? "text-green-400" : "text-red-400"}`}
                       >
-                        {isAvailable ? "Username is valid" : "Username is invalid (must me at least 8 charaters long)"}//available is changed to check the length of the username
+                        {isAvailable ? "Username is valid" : "Username is invalid (must me at least 8 charaters long)"}
                       </FormDescription>
                     )}
                     <FormMessage className="text-red-400" />
