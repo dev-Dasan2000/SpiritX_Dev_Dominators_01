@@ -77,7 +77,7 @@ export default function SignupForm() {
   const onSubmit = async (formData: any) => {
     const { username, password } = formData;
 
-    const response = await fetch("../api/auth", {
+    const response = await fetch("/api/auth", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
