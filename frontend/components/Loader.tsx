@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Loarder: React.FC = () => {
+const Loader2: React.FC = () => {
   return (
     <div role="status">
       <svg
@@ -24,4 +24,4 @@ const Loarder: React.FC = () => {
   );
 };
 
-export default Loarder;
+export default Loader2;
