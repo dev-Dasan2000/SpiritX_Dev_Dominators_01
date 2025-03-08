@@ -51,6 +51,19 @@ export default function LoginForm() {
     handlePassword();
   }, [password]);
 
+  useEffect(() => {
+    attemptAutoLogin();
+  }, []);
+
+  async function attemptAutoLogin(){
+    await loginMethods.refreshToken().then((response)=>{
+      if(response.accessToken){
+        setShowPopUp(true);
+        return;
+      }
+    });
+  }
+
   function handleUsername() {
     if (username.length > 0) {
       if (username.length < 8) {

@@ -8,9 +8,9 @@ const router = express.Router();
 
 router.post('/login', async (req, res) => {
     try {
-        const { username, password, checked } = req.body;
+        const { username, password, rememberMe } = req.body;
+        console.log(rememberMe);
         const user = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
-        console.log(user.rows);
 
         if (user.rows.length === 0) {
             return res.json({ successful: false });
@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
             secure: true,
         };
 
-        if (checked) {
+        if (rememberMe) {
             cookieOptions.maxAge = 14 * 24 * 60 * 60 * 1000;
         }
 
@@ -72,6 +72,6 @@ router.delete('/refresh_token', (req, res) => {
     } catch (error) {
         res.status(401).json({ error: error.message });
     }
-})
+});
 
 export default router;
