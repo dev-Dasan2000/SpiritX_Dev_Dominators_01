@@ -29,7 +29,7 @@ export default function LoginForm() {
     }
   });
 
-  // Handle form submission
+  // Handle form submission on click
   function onSubmit(data) {
     console.log(data);
     // Add your authentication logic here
