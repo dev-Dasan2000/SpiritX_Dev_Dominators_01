@@ -42,6 +42,7 @@ This will install all required Node.js packages for both frontend and backend, i
 
 2. Database Aquation:
    Database is all setuped and frontend access from the backend.
+   Database has been hosted.
 
 4. Set up the `.env` file in the root directory:
 
