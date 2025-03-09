@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "@/app/globals.css"; // Ensure Tailwind CSS is imported
 
 export const metadata: Metadata = {
-  title: "My Next.js App",
-  description: "A Next.js app with an SVG decorative background",
+  title: "DevDominators",
+  description: "A Next.js app by DevDominators",
 };
 
 export default function RootLayout({

@@ -61,7 +61,7 @@ export default function LoginForm() {
     });
   }
 
-  function handleUsername() {
+  function handleUsername() {//check length
     if (username.length > 0) {
       if (username.length < 8) {
         setUsernameError("Username must be at least 8 characters long");
@@ -76,7 +76,7 @@ export default function LoginForm() {
     }
   }
 
-  function handlePassword() {
+  function handlePassword() {//password validation
     if (password.length > 0) {
       if (password.length < 8) {
         setPasswordError("Password must be at least 8 characters long");
@@ -114,7 +114,7 @@ export default function LoginForm() {
     }
   });
 
-  async function onSubmit() {
+  async function onSubmit() {//handle login
 
     if(!(isUsernameValid && isPasswordValid)) {
       return;
