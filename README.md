@@ -87,6 +87,8 @@ npm run dev
 ##  Assumptions
 
 - The user has basic knowledge of Git, Node.js, and PostgreSQL.
+- For authentication JWT has been used.
+- For password hashing bcrypt. 
 - PostgreSQL is installed and correctly configured.
 - The development environment is Windows.
 - **shadcn/ui** and **Tailwind CSS** are pre-installed and configured for UI styling.
@@ -98,7 +100,7 @@ npm run dev
 3. Start both the backend and frontend servers.
 
 ##  --Contribution--
-## Authors
+### Authors
 
 - [iamindunil](https://www.github.com/imaindunil)
 - [dev-Dasan2000](https://www.github.com/dev-Dasan2000)
