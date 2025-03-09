@@ -252,7 +252,11 @@ export default function SignupForm() {
               />
 
               {/* Signup Button */}
-              <p className="text-center text-red-400 text-sm">{authError}</p>
+              <div className="items-center justify-center">
+                <div className={`transition-all duration-1000 overflow-hidden max-h-0 ${passwordStrength === "Strong password"	|| passwordStrength === "Moderate password" ? 'max-h-40' : ''}`}>
+                {passwordStrength === "Strong password" || passwordStrength === "Moderate password" && <p className="text-red-400 text-[12px]">{authError}</p>}
+                </div>
+              </div>
               <Button
                 disabled={loading}
                 type="submit"
