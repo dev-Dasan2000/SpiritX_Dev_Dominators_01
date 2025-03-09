@@ -252,9 +252,9 @@ export default function SignupForm() {
               />
 
               {/* Signup Button */}
-              <div className="items-center justify-center">
-                <div className={`transition-all duration-1000 overflow-hidden max-h-0 ${passwordStrength === "Strong password"	|| passwordStrength === "Moderate password" ? 'max-h-40' : ''}`}>
-                {passwordStrength === "Strong password" || passwordStrength === "Moderate password" && <p className="text-red-400 text-[12px]">{authError}</p>}
+              <div className="flex items-center justify-center">
+                <div className={`transition-all duration-1000 overflow-hidden max-h-0 ${passwordStrength === "Weak password" ? 'max-h-40' : ''}`}>
+                {passwordStrength === "Weak password" && <p className="text-red-400 text-[12px]">{"Provide an Stronger password!"}</p>}
                 </div>
               </div>
               <Button
