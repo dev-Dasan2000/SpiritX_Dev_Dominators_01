@@ -35,12 +35,9 @@ export default function LoginForm() {
   const [passwordText, setPasswordText] = useState("");
   const [authError, setAuthError] = useState("");
   const [loading, setLoading] = useState(false);
-
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
-
   const [showPopUp, setShowPopUp] = useState(false);
-
   const isReturningUser = searchParams.get("welcomeBack") === "true";
 
   useEffect(() => {
@@ -240,7 +237,7 @@ export default function LoginForm() {
                   </FormItem>
                 )}
               />
-              <div className=" items-center justify-center">
+              <div className="items-center justify-center">
                 <div className={`transition-all duration-1000 overflow-hidden max-h-0 ${authError ? 'max-h-40' : ''}`}>
                 {authError && <p className="text-red-400 text-[12px]">{authError}</p>}
                 </div>
